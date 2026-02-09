@@ -1,0 +1,15 @@
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+
+namespace DemoApp.Services.Customers.Dependencies.Databases.Customers.Context;
+using Models;
+
+internal class CustomerContext : DbContext
+{
+    public DbSet<Customer> Customers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        => modelBuilder.ApplyConfigurationsFromAssembly(
+            Assembly.GetExecutingAssembly()
+        );
+}
