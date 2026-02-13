@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DemoApp.Services.Customers.Dependencies.Databases.Customers.Context.Models;
 
-internal class Customer
+public class Customer
 {
     public Guid CustomerId { get; set; }
     public required string FirstName { get; set; }

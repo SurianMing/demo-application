@@ -1,3 +1,5 @@
+using DemoApp.Services.Customers.Domain.Definition.Dtos;
+
 namespace DemoApp.Services.Customers.BusinessLogic;
 
 internal class CustomerService(
@@ -10,5 +12,11 @@ internal class CustomerService(
     ) => await _customerData.CreateCustomer(
         firstName,
         surname
+    );
+
+    public async Task<CustomerDto> GetCustomerByIdentifier(
+        Guid customerIdentifier
+    ) => await _customerData.GetCustomerByIdentifier(
+        customerIdentifier
     );
 }

@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 namespace DemoApp.Services.Customers.Dependencies.Databases.Customers.Context;
 using Models;
 
-internal class CustomerContext : DbContext
+public class CustomerContext(
+    DbContextOptions<CustomerContext> options
+) : DbContext(options)
 {
     public DbSet<Customer> Customers { get; set; }
 

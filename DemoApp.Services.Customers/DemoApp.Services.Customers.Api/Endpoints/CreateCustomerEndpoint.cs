@@ -7,10 +7,29 @@ public class CreateCustomerEndpoint : IMinimalEndpoint
         app.MapPost(
             "customer",
             async (
-                [FromBody] CreateCustomerModel newCustomer
+                [FromBody] CreateCustomerModel newCustomer,
+                [FromServices] ICustomerService customerService,
+                HttpContext httpContext,
+                LinkGenerator linkGenerator
             ) =>
             {
+                var newCustomerIdentifier = await customerService.CreateCustomer(
+                    newCustomer.FirstName,
+                    newCustomer.Surname
+                );
 
+                var getCustomerLink = linkGenerator.GetUriByName(
+                    httpContext,
+                    "GetCustomerByIdentifier",
+                    new { customerIdentifier = newCustomerIdentifier.ToString() }
+                );
+
+                return Results.Created(
+                    getCustomerLink,
+                    newCustomerIdentifier
+                );
             }
-        );
+        )
+        .WithGroupName("Customers")
+        .WithName("CreateCustomer");
 }
