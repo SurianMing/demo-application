@@ -8,6 +8,8 @@ public class Customer
     public Guid CustomerId { get; set; }
     public required string FirstName { get; set; }
     public required string Surname { get; set; }
+
+    public ICollection<CustomerAddress> Addresses { get; } = null!;
 }
 
 internal class CustomerEntityTypeConfiguration : IEntityTypeConfiguration<Customer>

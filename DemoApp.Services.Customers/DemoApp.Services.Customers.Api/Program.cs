@@ -10,6 +10,8 @@ builder.Services.InitialiseBusinessLogic(builder.Configuration);
 
 var app = builder.Build();
 
+app.MapEndpoints();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -17,7 +19,5 @@ if (app.Environment.IsDevelopment())
 }
 
 // app.UseHttpsRedirection();
-
-app.MapEndpoints();
 
 app.Run();

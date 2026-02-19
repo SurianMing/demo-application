@@ -26,6 +26,11 @@ internal class CustomerData(
         return newEntity.CustomerId;
     }
 
+    public async Task<CustomerDto[]> GetAllCustomers()
+        => await _customerContext.Customers
+            .Select(entity => entity.ToDto())
+            .ToArrayAsync();
+
     public async Task<CustomerDto> GetCustomerByIdentifier(
         Guid customerIdentifier
     )

@@ -13,6 +13,8 @@ internal class CustomerService(
         firstName,
         surname
     );
+    public async Task<CustomerDto[]> GetAllCustomers()
+        => await _customerData.GetAllCustomers();
 
     public async Task<CustomerDto> GetCustomerByIdentifier(
         Guid customerIdentifier

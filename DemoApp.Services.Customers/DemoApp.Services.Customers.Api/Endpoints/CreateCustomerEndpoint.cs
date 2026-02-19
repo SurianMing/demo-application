@@ -30,6 +30,7 @@ public class CreateCustomerEndpoint : IMinimalEndpoint
                 );
             }
         )
-        .WithGroupName("Customers")
-        .WithName("CreateCustomer");
+        // .WithGroupName("Customers")
+        .WithName("CreateCustomer")
+        .Produces<Guid>();
 }

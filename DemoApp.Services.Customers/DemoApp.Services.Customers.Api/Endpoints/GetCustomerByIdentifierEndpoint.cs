@@ -1,7 +1,7 @@
 namespace DemoApp.Services.Customers.Api.Endpoints;
 using Models;
 
-public class GetCustomerEndpoint : IMinimalEndpoint
+public class GetCustomerByIdentifierEndpoint : IMinimalEndpoint
 {
     public void MapEndpoint(WebApplication app) =>
         app.MapGet(
@@ -23,5 +23,6 @@ public class GetCustomerEndpoint : IMinimalEndpoint
             }
         )
         .WithGroupName("Customers")
-        .WithName("GetCustomerByIdentifier");
+        .WithName("GetCustomerByIdentifier")
+        .Produces<CustomerModel>();
 }
